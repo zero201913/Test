@@ -38,6 +38,11 @@ public class SmallChanageSysApp {
                     System.out.print("请输入本次收益入账金额: ");
                     money = scanner.nextDouble();
                     //money的值应该校验一下，一会完善
+                    //判断不正确的入账金额情况
+                    if(money <= 0){
+                        System.out.println("您的入账金额最少在 0 以上才可以");
+                        break;
+                    }
                     balance += money;
                     //拼接收益入账信息 details
                     date = new Date();//获取当前日期
@@ -47,6 +52,11 @@ public class SmallChanageSysApp {
                 case "3":
                     System.out.print("消费金额: ");
                     money = scanner.nextDouble();
+                    //判断消费金额不正确的输入情况
+                    if(money <= 0 || money > balance){
+                        System.out.println("您的消费金额不能 等于低于0 或超过余额");
+                        break;
+                    }
                     //money值的范围应该校验
                     System.out.print("请输入消费说明: ");
                     note = scanner.next();
